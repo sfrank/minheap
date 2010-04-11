@@ -1,0 +1,18 @@
+This project contains several heap data structures with priority queue
+and melding functionality. The heaps is hard-wired to min-heap only
+functionality on fixnum keys as I needed maximum performance for this
+use case. Since the key comparison is in general limited to one or two
+places for every data structure variant only, an extension/re-use for
+max-heap functionality should be trivial.
+
+
+Implemented heap data structures an their properties are collected in
+the table below.
+
+Executive summary: for almost all cases the 'pairing heap' should give
+                   you the best performance. (or the 'ranked pairing
+                   heap' once it is fully debugged and added to the
+                   official repo; watch me forgetting to update this
+                   note then.)
+
+TODO, add properties table
