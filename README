@@ -15,4 +15,47 @@ Executive summary: for almost all cases the 'pairing heap' should give
                    official repo; watch me forgetting to update this
                    note then.)
 
-TODO, add properties table
+The different heap data structures posess the following computational
+complexities (amortized complexity is annotated with a '*'):
+
+binary heap:
+- insert O(lg n)
+- find/peek min O(1)
+- delete min O(lg n)
+- delete node O(lg n)
+- decrease key O(lg n)
+- meld O(lg n)
+
+splay heap:
+- insert O(lg n)*
+- find/peek min O(lg n)*
+- delete min O(lg n)*
+- delete node O(lg n)*
+- decrease key N/A
+- meld N/A
+
+fibonacci heap:
+- insert O(1)*
+- find/peek min O(1)*
+- delete min O(lg n)*
+- delete node O(lg n)*
+- decrease key O(1)*
+- meld O(1)*
+
+pairing heap:
+- insert O(1)*
+- find/peek min O(1)*
+- delete min O(lg n)*
+- delete node O(lg n)*
+- decrease key O(1)*
+- meld O(1)*
+
+violation heap:
+- insert O(1)*
+- find/peek min O(1)*
+- delete min O(lg n)*
+- delete node O(lg n)*
+- decrease key O(1)*
+- meld O(1)*
+
+

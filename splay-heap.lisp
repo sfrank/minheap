@@ -13,6 +13,7 @@
    #:node-find
    ))
 
+(in-package :splay-heap)
 
 ;;; splay tree functions
 
