@@ -68,7 +68,7 @@
     (declare (dynamic-extent buckets))
     (if (zerop (decf (slot-value heap 'size)))
         (setf (slot-value heap 'root) nil)
-        (let (tree)
+        (let ((tree))
           (loop for i = (node-lchild root) then next
                 for next = (shiftf (node-rchild i) nil)
                 with result = nil
