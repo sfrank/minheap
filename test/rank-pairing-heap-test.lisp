@@ -1,9 +1,9 @@
-(defpackage :pairing-heap-test (:use :CL :pairing-heap :lisp-unit))
+(defpackage :rank-pairing-heap-test (:use :CL :rank-pairing-heap :lisp-unit))
 
-(in-package :pairing-heap-test)
+(in-package :rank-pairing-heap-test)
 
 (define-test test-basic
-  (let ((heap (make-instance 'pairing-heap:pairing-heap))
+  (let ((heap (make-instance 'rank-pairing-heap:rank-pairing-heap))
         (htable (make-hash-table :test #'eql)))
     (assert-true (empty-p heap))
     (assert-eql 0 (heap-size heap))
@@ -28,7 +28,7 @@
     (assert-eql 0 (heap-size heap))))
 
 (define-test test-basic-2
-  (let ((heap (make-instance 'pairing-heap:pairing-heap))
+  (let ((heap (make-instance 'rank-pairing-heap:rank-pairing-heap))
         (htable (make-hash-table :test #'eql)))
     (assert-true (empty-p heap))
     (assert-eql 0 (heap-size heap))
@@ -51,7 +51,7 @@
     (assert-eql 0 (heap-size heap))))
 
 (define-test test-multiple-keys
-  (let ((heap (make-instance 'pairing-heap:pairing-heap)))
+  (let ((heap (make-instance 'rank-pairing-heap:rank-pairing-heap)))
     (loop for i in '(2 3 2 4 1 2)
           do (insert heap i i))
     (assert-eql 6 (heap-size heap))
@@ -64,7 +64,7 @@
     (assert-eql 0 (heap-size heap))))
 
 (define-test test-mk
-  (let ((heap (make-instance 'pairing-heap:pairing-heap)))
+  (let ((heap (make-instance 'rank-pairing-heap:rank-pairing-heap)))
     (loop for i in '(2 4 2 3 1)
           do (insert heap i i))
     (assert-eql 1 (extract-min heap))
@@ -74,7 +74,7 @@
     (assert-eql 4 (extract-min heap))))
 
 (define-test test-stress
-  (let ((heap (make-instance 'pairing-heap:pairing-heap))
+  (let ((heap (make-instance 'rank-pairing-heap:rank-pairing-heap))
         (size 75000))
     (assert-true (empty-p heap))
     (assert-eql 0 (heap-size heap))
@@ -89,7 +89,7 @@
     (assert-eql 0 (heap-size heap))))
 
 (define-test test-multiple-keys-stress
-  (let ((heap (make-instance 'pairing-heap:pairing-heap))
+  (let ((heap (make-instance 'rank-pairing-heap:rank-pairing-heap))
         (size 350)
         (key-range 100))
     (assert-true (empty-p heap))
@@ -105,8 +105,8 @@
     (assert-eql 0 (heap-size heap))))
 
 (define-test test-meld
-  (let ((heap-1 (make-instance 'pairing-heap:pairing-heap))
-        (heap-2 (make-instance 'pairing-heap:pairing-heap)))
+  (let ((heap-1 (make-instance 'rank-pairing-heap:rank-pairing-heap))
+        (heap-2 (make-instance 'rank-pairing-heap:rank-pairing-heap)))
     (assert-true (empty-p heap-1))
     (assert-eql 0 (heap-size heap-1))
     (assert-true (empty-p heap-2))
@@ -130,7 +130,7 @@
 
 
 (defun timing ()
-  (let ((heap (make-instance 'pairing-heap:pairing-heap))
+  (let ((heap (make-instance 'rank-pairing-heap:rank-pairing-heap))
         (size 100000)
         list)
     (dotimes (i size)

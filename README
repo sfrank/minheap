@@ -10,10 +10,9 @@ Implemented heap data structures an their properties are collected in
 the table below.
 
 Executive summary: for almost all cases the 'pairing heap' should give
-                   you the best performance. (or the 'ranked pairing
-                   heap' once it is fully debugged and added to the
-                   official repo; watch me forgetting to update this
-                   note then.)
+                   you the best performance. The 'rank pairing heap'
+                   has slightly worse overall but better worst case
+                   performance.
 
 The different heap data structures posess the following computational
 complexities (amortized complexity is annotated with a '*'):
@@ -42,7 +41,7 @@ fibonacci heap:
 - decrease key O(1)*
 - meld O(1)*
 
-pairing heap:
+pairing heap and variants:
 - insert O(1)*
 - find/peek min O(1)*
 - delete min O(lg n)*
