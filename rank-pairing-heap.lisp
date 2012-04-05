@@ -60,15 +60,15 @@
 
 (defun extract-min (heap)
   (declare (type rank-pairing-heap heap))
-  (let* ((root (slot-value heap 'root))
-         (buckets (make-array (ceiling (log most-positive-fixnum (/ (1+ (sqrt 5)) 2)))
-                              ;; approx of max. required buckets
-                              :element-type '(or null node)
-                              :initial-element nil)))
+  (let ((root (slot-value heap 'root))
+        (buckets (make-array (ceiling (log most-positive-fixnum (/ (1+ (sqrt 5)) 2)))
+                             ;; approx of max. required buckets
+                             :element-type '(or null node)
+                             :initial-element nil)))
     (declare (dynamic-extent buckets))
     (if (zerop (decf (slot-value heap 'size)))
         (setf (slot-value heap 'root) nil)
-        (let (tree)
+        (let ((tree))
           (loop for i = (node-lchild root) then next
                 for next = (shiftf (node-rchild i) nil)
                 with result = nil
@@ -197,7 +197,7 @@ empty after this operation but may be used further."
               nil))
   ;; restore rank rule for decreased node
   (setf (node-rank node)
-        (1+ (d-rank (node-lchild node))))
+        (1+ (the fixnum (d-rank (node-lchild node)))))
   ;; type-2 rank reduction
   (loop for u = (shiftf (node-parent node) nil) then (node-parent u)
         for rv = (d-rank (node-lchild u))

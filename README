@@ -11,8 +11,8 @@ the table below.
 
 Executive summary: for almost all cases the 'pairing heap' should give
                    you the best performance. The 'rank pairing heap'
-                   has slightly worse overall but better worst case
-                   performance.
+                   has slightly worse overall performance but better
+                   worst case behaviour.
 
 The different heap data structures posess the following computational
 complexities (amortized complexity is annotated with a '*'):
