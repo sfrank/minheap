@@ -71,19 +71,14 @@
         (let (tree)
           (loop for i = (node-lchild root) then next
                 for next = (shiftf (node-rchild i) nil)
-                with result = nil
                 do (let ((rank (node-rank i)))
                      (setf (node-parent i) nil)
                      (if (aref buckets rank)
-                         (progn 
-                           (push (link-fair (aref buckets rank) i)
-                                 result)
-                           (setf (aref buckets rank) nil))
+                         (setf tree (link (link-fair (aref buckets rank) i) tree)
+                               (aref buckets rank) nil)
                          (setf (aref buckets rank) i)))
                 while next
                 finally
-                   (loop for n in result
-                         do (setf tree (link tree n)))
                    (loop for v across buckets
                          when v
                            do (setf tree (link v tree))
@@ -133,6 +128,11 @@ empty after this operation but may be used further."
 
 
 ;;; internal structure maintaining functions
+
+(declaim (ftype (function ((or null node))
+                          (integer -1 #.(floor (log most-positive-fixnum
+                                                    (/ (1+ (sqrt 5)) 2)))))
+                d-rank))
 
 (defun attach-child (parent child)
   (declare (type node parent child)
