@@ -27,8 +27,7 @@
   (lchild nil :type (or null node))
   (rchild nil :type (or null node))
   (parent nil :type (or null node))
-  (rank 0 :type (integer 0 #.(floor (log most-positive-fixnum
-                                         (/ (1+ (sqrt 5)) 2))))))
+  (rank 0 :type (integer 0 #.(floor (log most-positive-fixnum 2)))))
 
 (defclass rank-pairing-heap ()
   ((size :initform 0 :initarg :size
@@ -63,7 +62,7 @@
   (declare (type rank-pairing-heap heap))
   (let ((root (slot-value heap 'root))
         (size (slot-value heap 'size))
-        (buckets (make-array #.(ceiling (log most-positive-fixnum (/ (1+ (sqrt 5)) 2)))
+        (buckets (make-array #.(ceiling (log most-positive-fixnum 2))
                              ;; approx of max. required buckets
                              :element-type '(or null node)
                              :initial-element nil)))
@@ -138,8 +137,7 @@ empty after this operation but may be used further."
 ;;; internal structure maintaining functions
 
 (declaim (ftype (function ((or null node))
-                          (integer -1 #.(floor (log most-positive-fixnum
-                                                    (/ (1+ (sqrt 5)) 2)))))
+                          (integer -1 #.(floor (log most-positive-fixnum 2))))
                 d-rank))
 
 (defun attach-child (parent child)
