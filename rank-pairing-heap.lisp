@@ -32,7 +32,8 @@
 
 (defclass rank-pairing-heap ()
   ((size :initform 0 :initarg :size
-         :type (integer 0 *))
+         :type (integer 0 *)
+         :accessor heap-size-access)
    (root :initform nil :initarg :roots
          :type (or null node))))
 
@@ -61,12 +62,15 @@
 (defun extract-min (heap)
   (declare (type rank-pairing-heap heap))
   (let ((root (slot-value heap 'root))
-        (buckets (make-array (ceiling (log most-positive-fixnum (/ (1+ (sqrt 5)) 2)))
+        (size (slot-value heap 'size))
+        (buckets (make-array #.(ceiling (log most-positive-fixnum (/ (1+ (sqrt 5)) 2)))
                              ;; approx of max. required buckets
                              :element-type '(or null node)
                              :initial-element nil)))
-    (declare (dynamic-extent buckets))
-    (if (zerop (decf (slot-value heap 'size)))
+    (declare (dynamic-extent buckets)
+             (optimize (speed 3) (space 0))
+             (type (integer 1 #.most-positive-fixnum) size))
+    (if (zerop (setf (slot-value heap 'size) (1- size)))
         (setf (slot-value heap 'root) nil)
         (let (tree)
           (loop for i = (node-lchild root) then next
@@ -80,6 +84,10 @@
                 while next
                 finally
                    (loop for v across buckets
+                         ;; reducing the max. number of buckets to check
+                         ;; depending on the max_rank <= lg(size) approximation
+                         ;; makes it actually slower, so leave it for now.
+                         ;for idx from (ceiling (log size 2)) downto 0
                          when v
                            do (setf tree (link v tree))
                          finally
