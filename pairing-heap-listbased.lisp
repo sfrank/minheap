@@ -19,7 +19,7 @@
 ;;;; TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 ;;;; SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-(defpackage :pairing-heap (:use :CL)
+(defpackage :pairing-heap-list (:use :CL)
   (:export
    #:pairing-heap
    #:clear-heap
@@ -33,7 +33,7 @@
    #:meld
    ))
 
-(in-package :pairing-heap)
+(in-package :pairing-heap-list)
 
 ;;;; Variant of pairing-heap.lisp where the children of a node are
 ;;;; implemented as a list. The code is a lot more readable, however

@@ -168,7 +168,7 @@
     (when tree
       (decf (slot-value heap 'size))
       (setf (slot-value heap 'tree)
-        (splay-tree-delete neap (splay-node-segment tree)))
+        (splay-tree-delete heap (splay-node-segment tree)))
       (values (splay-node-element tree)
               (splay-node-segment tree)))))
 
