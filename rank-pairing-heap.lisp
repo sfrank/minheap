@@ -238,7 +238,7 @@ empty after this operation but may be used further."
         finally 
            ;; set rank in case u is a root
            (unless (node-parent u)
-             (setf (node-rank u) rv))
+             (setf (node-rank u) (1+ rv)))
            (return node)))
 
 (declaim (inline d-rank))
