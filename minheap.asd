@@ -11,5 +11,6 @@
    (:file "pairing-heap")
    (:file "pairing-heap-listbased")
    (:file "rank-pairing-heap")
+   (:file "rank-pairing-heap-clist")
    (:file "splay-heap")
    (:file "violation-heap")))

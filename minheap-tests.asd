@@ -11,4 +11,5 @@
                              (:file "pairing-heap-elmasri-test")
                              (:file "pairing-heap-test")
                              (:file "rank-pairing-heap-test")
+                             (:file "rank-pairing-heap-clist-test")
                              (:file "violation-heap-test")))))
