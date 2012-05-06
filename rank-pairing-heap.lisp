@@ -234,7 +234,7 @@ empty after this operation but may be used further."
                     (max rv rw)
                     (1+ (max rv rw)))
         while (< k (node-rank u))
-        do (print k) (setf (node-rank u) k)
+        do (setf (node-rank u) k)
         finally 
            ;; set rank in case u is a root
            (unless (node-parent u)

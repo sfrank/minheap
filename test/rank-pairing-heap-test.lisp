@@ -73,6 +73,11 @@
     (assert-eql 3 (extract-min heap))
     (assert-eql 4 (extract-min heap))))
 
+(define-test test-singleton
+  (let ((heap (make-instance 'rank-pairing-heap:rank-pairing-heap)))
+    (insert heap 1 1)
+    (assert-eql 1 (extract-min heap))))
+
 (define-test test-stress
   (let ((heap (make-instance 'rank-pairing-heap:rank-pairing-heap))
         (size 75000))
