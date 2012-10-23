@@ -67,8 +67,7 @@ the cycle list accordingly."
 
 (defun splice-lists (list-a list-b)
   "Splice two circular lists together"
-  (declare (optimize (speed 3) (space 0) (debug 0))
-           (sb-ext:muffle-conditions sb-ext:compiler-note))
+  (declare (optimize (speed 3) (space 0) (debug 0)))
   (cond
     ((null list-a) list-b)
     ((null list-b) list-a)
@@ -248,7 +247,7 @@ root-list. No consolidation is done at this time."
 
 (defun extract-node (heap node)
   (let ((key (node-key node))
-        (value (node-value node)))
+        (value (node-data node)))
     (decrease-key heap node most-negative-fixnum)
     (extract-min heap)
     (values value key)))
