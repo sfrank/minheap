@@ -19,7 +19,7 @@
 ;;;; TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 ;;;; SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-(defpackage :fib-heap (:use :CL)
+(defpackage :fib-heap (:use :cl)
   (:export
    #:fib-heap
    #:clear-heap

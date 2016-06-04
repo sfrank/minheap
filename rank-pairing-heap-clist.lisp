@@ -19,7 +19,7 @@
 ;;;; TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 ;;;; SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-(defpackage :rank-pairing-heap-clist (:use :CL)
+(defpackage :rank-pairing-heap-clist (:use :cl)
   (:export
    #:rank-pairing-heap-clist
    #:clear-heap
