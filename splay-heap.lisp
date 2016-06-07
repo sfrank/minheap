@@ -19,7 +19,7 @@
 ;;;; TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 ;;;; SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-(defpackage :splay-heap (:use :CL)
+(defpackage :splay-heap (:use :cl)
   (:export
    #:pairing-heap
    #:clear-heap
